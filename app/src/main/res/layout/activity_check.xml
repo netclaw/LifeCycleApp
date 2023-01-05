@@ -64,7 +64,6 @@
             android:onClick="onCancelButton"/>
 
         <Button
-            android:id="@+id/buttonok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -84,7 +83,7 @@
             android:layout_marginBottom="505dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+             />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

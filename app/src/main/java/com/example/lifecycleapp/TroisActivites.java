@@ -39,6 +39,21 @@ public class TroisActivites extends AppCompatActivity {
 
 
 
+
+
+        /*
+        if(Check.v){
+            ec1r=Integer.parseInt(ec1.getText().toString());
+            ec2r=Integer.parseInt(ec2.getText().toString());
+            if(ec1r+ec2r==Check.somme){
+
+            }
+
+        }
+        */
+
+
+
     }
 
     public void onCall(View view){
@@ -62,13 +77,28 @@ public class TroisActivites extends AppCompatActivity {
         } }
 
     public void onNavigate(View view){
-        ec1r=Integer.parseInt(ec1.getText().toString());
-        ec2r=Integer.parseInt(ec2.getText().toString());
+        //if(!Check.v){
+        if(ec1.getText().toString().compareTo("")!=0)
+            ec1r=Integer.parseInt(ec1.getText().toString());
+        if(ec2.getText().toString().compareTo("")!=0)
+            ec2r=Integer.parseInt(ec2.getText().toString());
+            //Log.i("HELP","la valeur est:"+Check.somme);
 
-        int somme=ec1r+ec2r;
 
-        Intent intent=new Intent(TroisActivites.this,Check.class);
-        startActivity(intent);
+            Intent intent=new Intent(TroisActivites.this,Check.class);
+            startActivity(intent);
+        //}else{
+        /*
+            String url = et2.getText().toString();
+            if(url.compareTo("")==0){
+                url="https://www.emi.ac.ma";
+            }
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);*/
+
+        //}
+
 
         /*
         String url = et2.getText().toString();
@@ -80,6 +110,32 @@ public class TroisActivites extends AppCompatActivity {
         startActivity(intent);
         */
 
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("help","avant check state");
+        if(Check.state==1){
+            Check.state=0;
+            Log.i("help","entre check state");
+            if(Check.somme==ec1r+ec2r){
+                String url = et2.getText().toString();
+                if(url.compareTo("")==0){
+                    url="https://www.emi.ac.ma";
+                }
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+
+            }else{
+                Log.i("somme reponse","somme incorrect");
+            }
+
+        }
+        Log.i("help","apres check state");
 
 
     }
